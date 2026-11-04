@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NexChart — charting, scripting and trading in one terminal</title>
+<meta name="description" content="NexChart is a web-based charting and trading terminal: multi-chart layouts, 135+ indicators, the NexScript language, backtesting, screener, alerts and paper trading.">
+<style>
+:root { --bg:#080a0f; --bg2:#0d1017; --bg3:#131722; --line:rgba(255,255,255,.09); --tx:#f3f5fa; --tx2:#9aa4b8; --accent:#2f6bf0; --accent-hi:#7aa8ff; --up:#2dd4a7; --brand:linear-gradient(135deg,#5b8cff,#3ddcff); }
+@media (prefers-color-scheme: light) { :root { --bg:#f6f7fb; --bg2:#fff; --bg3:#eef0f6; --line:rgba(14,20,40,.12); --tx:#0a0f1e; --tx2:#566078; --accent:#2563eb; --accent-hi:#1d4ed8; --up:#0c9f78; } }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--tx); font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent-hi); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+header { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; gap: 20px; height: 56px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; color: var(--tx); text-decoration: none; }
+.logo i { width: 26px; height: 26px; border-radius: 8px; background: var(--brand); display: grid; place-items: center; color: #07101c; font: 800 14px Inter, sans-serif; font-style: normal; }
+nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; } nav a { color: var(--tx2); text-decoration: none; } nav a:hover { color: var(--tx); }
+.btn { display: inline-flex; align-items: center; height: 42px; padding: 0 20px; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; }
+.btn.ghost { background: transparent; border: 1px solid var(--line); color: var(--tx); }
+.hero { padding: 88px 0 64px; text-align: center; }
+.hero h1 { margin: 0 auto 16px; max-width: 760px; font-size: clamp(32px, 6vw, 56px); line-height: 1.1; letter-spacing: -.03em; }
+.hero h1 span { background: var(--brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p { margin: 0 auto 28px; max-width: 620px; color: var(--tx2); font-size: 18px; }
+.hero .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+section { padding: 56px 0; border-top: 1px solid var(--line); }
+h2 { margin: 0 0 8px; font-size: clamp(24px, 4vw, 32px); letter-spacing: -.02em; }
+.lead { margin: 0 0 32px; color: var(--tx2); max-width: 640px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px; }
+.grid h3 { margin: 0 0 6px; font-size: 16px; } .grid p { margin: 0; color: var(--tx2); font-size: 15px; }
+.grid > div { padding-top: 14px; border-top: 2px solid var(--line); } .grid > div:hover { border-top-color: var(--accent); }
+pre { margin: 0; padding: 18px 20px; overflow: auto; border-radius: 12px; background: var(--bg2); border: 1px solid var(--line); font: 13.5px/1.7 "JetBrains Mono", ui-monospace, Menlo, monospace; color: var(--tx); }
+.k { color: #c3a6ff; } .s { color: #f2c879; } .c { color: var(--tx2); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; } @media (max-width: 760px) { .two { grid-template-columns: 1fr; } nav a:not(.keep) { display: none; } }
+.note { padding: 16px 18px; border-radius: 10px; background: var(--bg3); color: var(--tx2); font-size: 14px; }
+footer { padding: 32px 0 48px; border-top: 1px solid var(--line); color: var(--tx2); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 3px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top"><i>N</i>NexChart</a>
+  <nav aria-label="Main"><a href="#features">Features</a><a href="#nexscript">NexScript</a><a href="#trading">Trading</a><a class="keep" href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <h1>Charting, scripting and trading in <span>one terminal</span></h1>
+  <p>NexChart is a web-based terminal for active traders. Analyse markets on multi-chart layouts, write your own indicators and strategies, test them, and trade from the same screen.</p>
+  <div class="row"><a class="btn" href="#contact">Get in touch</a><a class="btn ghost" href="#features">See what it does</a></div>
+</div></div>
+
+<section id="features"><div class="wrap">
+  <h2>Everything on one screen</h2>
+  <p class="lead">Built for people who watch several markets at once and want their tools to stay out of the way.</p>
+  <div class="grid">
+    <div><h3>Multi-chart layouts</h3><p>Up to 16 charts with synced symbols, intervals and crosshairs. Layouts and preferences follow you to any device.</p></div>
+    <div><h3>135+ indicators</h3><p>Trend, momentum, volatility, volume and statistics. Every built-in has readable source code you can open and copy.</p></div>
+    <div><h3>Drawing tools</h3><p>Trend lines, Fibonacci, ranges, text and more, with templates and per-chart sync.</p></div>
+    <div><h3>Screener and heatmap</h3><p>Filter hundreds of markets by change, range and volume, and see the whole market at a glance.</p></div>
+    <div><h3>Watchlists and alerts</h3><p>Flags, notes, tags and your own targets per market. Alerts that combine several conditions.</p></div>
+    <div><h3>Replay</h3><p>Step through past price action, on one chart or on all of them together.</p></div>
+  </div>
+</div></section>
+
+<section id="nexscript"><div class="wrap two">
+  <div>
+    <h2>NexScript: your own indicators and strategies</h2>
+    <p class="lead" style="margin-bottom:16px">A small, readable language made for charts. Write it in the built-in editor, run it, and it lands on the chart like any indicator. Errors and messages appear in your language.</p>
+    <p class="lead" style="margin:0">Strategies can be backtested, with results scored in risk units, and optimised across settings.</p>
+  </div>
+<pre aria-label="NexScript example"><span class="k">nexscript</span> <span class="s">"EMA cross"</span> <span class="k">strategy</span>
+<span class="k">param</span> fast: int = 12 <span class="k">range</span> 2..100
+<span class="k">param</span> slow: int = 26 <span class="k">range</span> 3..300
+
+<span class="k">let</span> fastLine = ema(close, fast)
+<span class="k">let</span> slowLine = ema(close, slow)
+<span class="k">draw line</span> fastLine <span class="k">color</span> orange <span class="k">width</span> 2
+<span class="k">draw line</span> slowLine <span class="k">color</span> blue
+
+<span class="k">go long when</span> crossUp(fastLine, slowLine)
+<span class="k">go flat when</span> crossDown(fastLine, slowLine)</pre>
+</div></section>
+
+<section id="trading"><div class="wrap">
+  <h2>Trade where you analyse</h2>
+  <p class="lead">Place orders from the chart, attach stop-loss and take-profit, and follow positions and orders in one blotter. A paper-trading account lets you practise with no real money.</p>
+  <div class="note">NexChart is a software tool. It does not hold your funds, and nothing on this site is investment advice. Trading carries risk, and you can lose money.</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Contact</h2>
+  <p class="lead">Questions, partnerships or press: write to us.</p>
+  <a class="btn" href="mailto:ozankorkmaz1996@hotmail.com">ozankorkmaz1996@hotmail.com</a>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© <span id="y">2026</span> NexChart. All rights reserved.</span>
+  <span>Market data shown in the product is provided by third parties and may be delayed or incomplete.</span>
+</div></footer>
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
